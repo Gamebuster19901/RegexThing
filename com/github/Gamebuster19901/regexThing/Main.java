@@ -25,14 +25,14 @@ public class Main {
 		
 		System.out.println("Enter 2 words. I will determine if the letters of the first word are contained in the second word.\nOr type \"terminate\" to terminate this program.");
 		s.hasNextLine();
-		line1 = s.nextLine().toLowerCase();
+		line1 = s.nextLine();
 		if(line1.equals(("terminate"))){
 			return;
 		}
 		
 		System.out.println("Enter second word, or \"terminate\" to terminate this program.");
 		s.hasNextLine();
-		line2 = s.nextLine().toLowerCase();
+		line2 = s.nextLine();
 		if(line2.equals(("terminate"))){
 			return;
 		}
@@ -46,7 +46,7 @@ public class Main {
 	
 	public static boolean checkStrings(String line1, String line2) {
 		if(line2.length() == 0) {return true;}
-		String regex = "[" + line2.charAt(0) + "]";
+		String regex = "(?i)(" + line2.charAt(0) + ")";
 		if(line1.matches(".*" + regex + ".*")) {
 			return checkStrings(line1.replaceFirst(regex, ""), line2.replaceFirst(regex, ""));
 		}
